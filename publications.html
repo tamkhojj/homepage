@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khoi Tran - Publications</title>
+    <link rel="icon" type="image/png" href="https://img.icons8.com/ultraviolet/40/physics.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #0a0a0a;
+            color: #ffffff;
+            font-family: 'Exo 2', sans-serif;
+            overflow-x: hidden;
+        }
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.4;
+        }
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .ai-spinner {
+            width: 100px;
+            height: 100px;
+            background: url('https://img.icons8.com/ios-filled/100/3b82f6/artificial-intelligence.png') no-repeat center;
+            background-size: contain;
+            animation: spin 1.5s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #3b82f6, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .highlight-text {
+            color: #60a5fa;
+            font-weight: bold;
+        }
+        .hover-glow {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-glow:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.5);
+        }
+        nav {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        .ai-button {
+            background: linear-gradient(45deg, #3b82f6, #a855f7);
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+        }
+        .ai-button:hover {
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.7);
+            transform: scale(1.05);
+        }
+        .accordion-content {
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .accordion-content.active {
+            max-height: 500px;
+            opacity: 1;
+            overflow-y: auto;
+        }
+        .view-toggle .ai-button.active {
+            background: linear-gradient(45deg, #1e40af, #6b21a8);
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
+        }
+        .text-justify {
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading">
+        <div class="ai-spinner"></div>
+    </div>
+
+    <!-- Particle Background -->
+    <canvas id="particles"></canvas>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-10">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/artificial-intelligence.png" alt="AI Logo" class="h-10">
+            </a>
+            <ul class="flex space-x-6">
+                <li><a href="index.html" class="hover:text-blue-400 transition-colors">About</a></li>
+                <li><a href="experience.html" class="hover:text-blue-400 transition-colors">Experience</a></li>
+                <li><a href="publications.html" class="hover:text-blue-400 transition-colors">Publications</a></li>
+                <li><a href="education.html" class="hover:text-blue-400 transition-colors">Education</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Publications Section -->
+    <section id="publications" class="min-h-screen py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-5xl font-bold gradient-text text-center mb-12" data-aos="zoom-in">Publications</h2>
+            <!-- List View -->
+            <div id="listView" class="space-y-4 max-w-4xl mx-auto">
+                <!-- Publication 6 -->
+                <div class="bg-gray-800 bg-opacity-50 p-4 rounded-lg hover-glow" data-aos="zoom-in-up">
+                    <h3 class="text-xl font-semibold text-blue-300">Improving Text-to-Image Retrieval by Integrating CLIP With Query-guided Cross-modal Attention</h3>
+                    <p class="text-gray-400 text-justify">This paper proposes an enhanced text-to-image retrieval method by combining Query-Guided Cross-Modal Attention with the CLIP model and Hard Negative Sampling, achieving superior performance on the Flickr30k dataset and demonstrating strong potential for intelligent multimedia retrieval applications.</p>
+                    <p class="text-gray-400"><span class="font-semibold">Authors:</span> <span class="gradient-text font-bold">Khoi Tran</span>, Phuoc Tran, The Thanh Van, Thi Dinh Nguyen</p>
+                    <p class="text-gray-400"><span class="font-semibold">Published in:</span> <span class="highlight-text">The 18th National Conference on Fundamental and Applied IT Research</span></p>
+                    <p class="text-gray-400"><span class="font-semibold">Published Date:</span> Jul 2025</p>
+                    <div class="mt-2">
+                        <button onclick="toggleAccordion('abstract6-list')" class="ai-button text-white text-sm">Abstract</button>
+                    </div>
+                    <div id="abstract6-list" class="accordion-content mt-2 text-gray-300 text-justify">In the context of the rapid development of multimedia data retrieval systems, the Text-to-Image Retrieval problem plays an increasingly important role in many practical applications such as topic-based image retrieval, image-based recommendation systems, and intelligent education. This paper proposes an improved method to improve the efficiency of text-to-image retrieval by integrating the Query-Guided Cross-Modal Attention mechanism with the CLIP (Contrastive Language–Image Pre-training) model. This combination allows the model to better focus on image regions related to the query content, thereby enhancing the matching accuracy between the two data domains “text–image”. In addition, the Hard Negative Sampling selection technique is used to increase the discriminative ability in the embedding space and improve the quality of contrastive learning. Experiments are conducted on the Flickr30k dataset with Recall@K evaluation metrics (R@1, R@5, R@10) showing that the proposed model achieves superior performance, and at the same time demonstrates the potential of this combination method in intelligent image retrieval systems.</div>
+                </div>
+                <!-- Publication 5 -->
+                <div class="bg-gray-800 bg-opacity-50 p-4 rounded-lg hover-glow" data-aos="zoom-in-up">
+                    <h3 class="text-xl font-semibold text-blue-300">Question and Answer System on Ceramics Dataset Using PhoBERT and RAG</h3>
+                    <p class="text-gray-400 text-justify">This paper proposes an extractive QA system for Vietnamese ceramics heritage by combining PhoBERT and Retrieval-Augmented Generation (RAG), leveraging a curated dataset and knowledge base to improve answer accuracy and support cultural preservation in low-resource domains.</p>
+                    <p class="text-gray-400"><span class="font-semibold">Authors:</span> Van Trong Nguyen, Phuoc Tran, <span class="gradient-text font-bold">Khoi Tran</span></p>
+                    <p class="text-gray-400"><span class="font-semibold">Published in:</span><span class="highlight-text">The 18th National Conference on Fundamental and Applied IT Research</span></p>
+                    <p class="text-gray-400"><span class="font-semibold">Published Date:</span> Jul 2025</p>
+                    <div class="mt-2">
+                        <button onclick="toggleAccordion('abstract5-list')" class="ai-button text-white text-sm">Abstract</button>
+                    </div>
+                    <div id="abstract5-list" class="accordion-content mt-2 text-gray-300 text-justify">This paper presents a method for building an automatic Question Answering (QA) system specialized for the cultural heritage domain of Vietnamese Ceramics. Facing the challenges of scattered information sources and the growing need for knowledge access, we propose an architecture combining the Vietnamese language model PhoBERT with the Retrieval-Augmented Generation (RAG) technique for Extractive QA tasks. The methodology involves constructing a specialized QA dataset and knowledge base from diverse documentary sources, followed by fine-tuning the PhoBERT model to identify answer spans within relevant contexts retrieved from the knowledge base. This approach aims to enhance the accuracy and contextual relevance of the answers. This research lays the groundwork for applying advanced NLP to the preservation and dissemination of Vietnamese cultural heritage, while also providing an effective extractive QA architecture for specialized, low-resource domains.</div>
+                </div>
+                <!-- Publication 4 -->
+                <div class="bg-gray-800 bg-opacity-50 p-4 rounded-lg hover-glow" data-aos="zoom-in-up">
+                    <h3 class="text-xl font-semibold text-blue-300">Developing a Knowledge Graph for The Image Captioning Problem</h3>
+                    <p class="text-gray-400 text-justify">This paper proposes enhancing image captioning by integrating a knowledge graph enriched with semantic relationships from ConceptNet, resulting in more accurate and context-aware captions, with improved BLEU-1 and BLEU-4 scores on MS-COCO and Flickr30k datasets.</p>
+                    <p class="text-gray-400"><span class="font-semibold">Authors:</span> Thi Dinh Nguyen, <span class="gradient-text font-bold">Khoi Tran</span>, Manh Thanh Le</p>
+                    <p class="text-gray-400"><span class="font-semibold">Published in:</span>  <span class="highlight-text">The 18th National Conference on Fundamental and Applied IT Research</span></p>
+                    <p class="text-gray-400"><span class="font-semibold">Published Date:</span> Jul 2025</p>
+                    <div class="mt-2">
+                        <button onclick="toggleAccordion('abstract4-list')" class="ai-button text-white text-sm">Abstract</button>
+                    </div>
+                    <div id="abstract4-list" class="accordion-content mt-2 text-gray-300 text-justify">Image captioning is an important problem in the field of computer vision, requiring the model to not only accurately recognize the image content but also generate semantically appropriate natural language descriptions. Although current deep learning models have achieved many positive results, image captioning still has difficulty in fully representing the relationships between objects and abstract contexts in images. This paper aims to improve the quality of image captioning by developing and integrating some special relationships into the Knowledge Graph (KG) to support effective caption extraction for images. The main proposed contents include: (1) building a compact KG from images, focusing on important objects and relationships; (2) enriching the KG with semantic knowledge from ConceptNet; (3) integrating the KG into the captioning model to support the generation of better-connected and semantically expressive texts. Experimental evaluation on two benchmark datasets MS-COCO and Flickr30k, shows significant improvement in BLEU-1 and BLEU-4 caption accuracy compared to traditional methods.</div>
+                </div>
+                <!-- Publication 1 (Saigon Tourism) -->
+                <div class="bg-gray-800 bg-opacity-50 p-4 rounded-lg hover-glow" data-aos="zoom-in-up">
+                    <h3 class="text-xl font-semibold text-blue-300">Saigon Tourism: A Domain-Specific Dataset for Question Answering Systems</h3>
+                    <p class="text-gray-400 text-justify">This paper introduces Saigon Tourism, a curated QA dataset focused on tourism in Ho Chi Minh City, covering topics like landmarks, cuisine, and culture, with the goal of enhancing domain-specific QA system performance through high-quality, annotated data.</p>
+                    <p class="text-gray-400"><span class="font-semibold">Authors:</span> <span class="gradient-text font-bold">Khoi Tran</span>, Phuoc Tran</p>
+                    <p class="text-gray-400"><span class="font-semibold">Published in:</span>  <span class="highlight-text">1st International Conference on Computational Intelligence in Engineering Science</span></p>
+                    <p class="text-gray-400"><span class="font-semibold">Published Date:</span> Jul 2025</p>
+                    <div class="mt-2">
+                        <button onclick="toggleAccordion('abstract1-list')" class="ai-button text-white text-sm">Abstract</button>
+                    </div>
+                    <div id="abstract1-list" class="accordion-content mt-2 text-gray-300 text-justify">In recent years, Question Answering (QA) systems have gained significant attention due to their ability to provide precise and context-aware information retrieval. However, the effectiveness of QA systems relies heavily on the quality and domain specificity of the datasets used for training and evaluation. In this study, we present Saigon Tourism, a curated dataset specifically designed to address the needs of QA systems in the tourism domain, focusing on Ho Chi Minh City (Saigon), Vietnam. The dataset encompasses a wide range of tourism-related topics, including landmarks, cuisine, accommodation, transportation, cultural events, and local insights, ensuring a comprehensive resource for both researchers and developers. We outline the dataset creation process, including data collection, annotation, and quality control, and evaluate its applicability in real-world QA scenarios. By leveraging Saigon Tourism, we aim to enhance the capabilities of domain-specific QA systems and contribute to the growing body of resources for AI-driven tourism applications.</div>
+                </div>
+                <!-- Publication 2 (Image Captioning) -->
+                <div class="bg-gray-800 bg-opacity-50 p-4 rounded-lg hover-glow" data-aos="zoom-in-up">
+                    <h3 class="text-xl font-semibold text-blue-300">Improving Efficiency Image Captioning by Using Attention Mechanism Combined with Knowledge Graph</h3>
+                    <p class="text-gray-400 text-justify">This paper proposes an image captioning method for multi-object images by combining attention mechanisms, a knowledge graph, and semantic information from ConceptNet, achieving effective results on MS-COCO and Flickr30k datasets using BLEU-1 and BLEU-4 metrics.</p>
+                    <p class="text-gray-400"><span class="font-semibold">Authors:</span> <span class="gradient-text font-bold">Khoi Tran</span>, Thi Dinh Nguyen, Uyen Nhi Thi Nguyen, Manh Thanh Le</p>
+                    <p class="text-gray-400"><span class="font-semibold">Published in:</span><span class="highlight-text"> 18th Asian Conference on Intelligent Information and Database Systems</span> </p>
+                    <p class="text-gray-400"><span class="font-semibold">Published Date:</span> Oct 2024</p>
+                    <div class="mt-2">
+                        <button onclick="toggleAccordion('abstract2-list')" class="ai-button text-white text-sm">Abstract</button>
+                    </div>
+                    <div id="abstract2-list" class="accordion-content mt-2 text-gray-300 text-justify">Improving the accuracy of image caption extraction is one of the problems related to computer vision and depends on natural language processing. Therefore, the image captioning problem is performed by many different combination methods. This paper proposes a method to build captions for multi-object images by combining attention mechanisms to focus on the main objects and relationships in the image; thereby building a knowledge graph and combining semantics from ConceptNet. To do this, each object in the input image is recognized and classified using a deep learning network. The objects and relationships between the objects of interest will be added to the knowledge graph. Finally, semantics from the built knowledge graph and ConceptNet are combined to complete the caption for the input image. The method is tested on MS-COCO and Flickr30k image datasets with BLEU-1 and BLEU-4 metrics to evaluate these results. The experimental results are compared with the results of other methods on the same dataset; this proves the feasibility, correctness, and efficiency of the implemented method.</div>
+                </div>
+                <!-- Publication 3 (Image Retrieval) -->
+                <div class="bg-gray-800 bg-opacity-50 p-4 rounded-lg hover-glow" data-aos="zoom-in-up">
+                    <h3 class="text-xl font-semibold text-blue-300">Image Retrieval Based on Deep Learning and Knowledge Graph</h3>
+                    <p class="text-gray-400 text-justify">This paper proposes an image retrieval and captioning model combining deep neural networks and a knowledge graph, achieving high accuracy on the MS-COCO and Flickr30k datasets.</p>
+                    <p class="text-gray-400"><span class="font-semibold">Authors:</span> <span class="gradient-text font-bold">Khoi Tran</span>, Phuoc Tran, Van The Thanh</p>
+                    <p class="text-gray-400"><span class="font-semibold">Published in:</span><span class="highlight-text"> The 17th National Conference on Fundamental and Applied IT Research</span> </p>
+                    <p class="text-gray-400"><span class="font-semibold">Published Date:</span> Dec 2024</p>
+                    <div class="mt-2">
+                        <button onclick="toggleAccordion('abstract3-list')" class="ai-button text-white text-sm">Abstract</button>
+                    </div>
+                    <div id="abstract3-list" class="accordion-content mt-2 text-gray-300 text-justify">In this paper, an image retrieval and captioning model is proposed based on deep learning networks combined with a knowledge graph. Firstly, the ResNet50 and YOLOv8 networks are used to extract features and classify the input images. Next, a knowledge graph structure is constructed for the process of similar image retrieval and image captioning synthesis. From this, a data enrichment algorithm for the knowledge graph is proposed to serve the tasks of image retrieval and annotation. For each input image, the features are extracted and classified using ResNet50 and YOLOv8 networks, and Cypher queries are generated based on the classifications of the objects in the image. The query results return a set of identifiers of similar images, which are then used to look up similar images to the original as well as the corresponding captions. The input image caption is generated by synthesizing the captions of the nearest similar images using a Transformer network. Based on the proposed method, an experiment was conducted and evaluated on the MS-COCO and Flickr30k datasets, with the accuracy of similar image retrieval being 0.92 and 0.88, respectively. The experimental results indicate that the image retrieval model based on deep learning networks combined with a knowledge graph is effective and can be applied in various fields of image information retrieval.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({ duration: 1000 });
+
+        // Hide loading screen after 2 seconds
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loading').style.display = 'none';
+            }, 2000);
+        });
+
+        // Particle effect
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 150;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.size > 0.2) this.size -= 0.01;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((particle, index) => {
+                particle.update();
+                particle.draw();
+                if (particle.size <= 0.2) {
+                    particles.splice(index, 1);
+                    particles.push(new Particle());
+                }
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        initParticles();
+        animateParticles();
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Accordion toggle
+        function toggleAccordion(id) {
+            const element = document.getElementById(id);
+            element.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
