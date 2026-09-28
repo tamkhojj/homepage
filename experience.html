@@ -4,215 +4,249 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Khoi Tran - Experience</title>
-    <link rel="icon" type="image/png" href="https://img.icons8.com/ultraviolet/40/physics.png">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background: #0a0a0a;
-            color: #ffffff;
-            font-family: 'Exo 2', sans-serif;
-            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
         }
-        #particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.4;
+
+        body {
+            background-color: #ffffff;
+            color: #1f2937;
         }
-        #loading {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #0a0a0a;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
+
+        body.dark {
+            background-color: #0f0f0f;
+            color: #e5e5e5;
         }
-        .ai-spinner {
-            width: 100px;
-            height: 100px;
-            background: url('https://img.icons8.com/ios-filled/100/3b82f6/artificial-intelligence.png') no-repeat center;
-            background-size: contain;
-            animation: spin 1.5s linear infinite;
+
+        body.dark .nav-border {
+            border-color: #262626;
         }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+
+        body.dark .nav-link {
+            color: #a3a3a3;
         }
-        .gradient-text {
-            background: linear-gradient(to right, #3b82f6, #a855f7);
+
+        body.dark .nav-link:hover {
+            color: #60a5fa;
+        }
+
+        body.dark .card {
+            background-color: #171717;
+            border-color: #262626;
+        }
+
+        body.dark .text-main {
+            color: #f5f5f5;
+        }
+
+        body.dark .text-secondary {
+            color: #d4d4d4;
+        }
+
+        body.dark .text-muted {
+            color: #a3a3a3;
+        }
+
+        /* Hologram text */
+        .hologram-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #22d3ee, #3b82f6, #818cf8, #22d3ee);
+            background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: hologram 4s linear infinite;
         }
-        .highlight-text {
-            color: #60a5fa;
-            font-weight: bold;
+
+        @keyframes hologram {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
         }
-        .hover-glow {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        .nav-link {
+            color: #4b5563;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.2s;
         }
-        .hover-glow:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.5);
+
+        .nav-link:hover {
+            color: #2563eb;
         }
-        nav {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
+
+        /* Loading */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
         }
-        .ai-button {
-            background: linear-gradient(45deg, #3b82f6, #a855f7);
-            padding: 0.5rem 1.5rem;
-            border-radius: 9999px;
-            transition: all 0.3s ease;
+        body.dark #loading {
+            background-color: #0f0f0f;
         }
-        .ai-button:hover {
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.7);
-            transform: scale(1.05);
+        #loading.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .ai-loader {
+            width: 56px;
+            height: 56px;
+            animation: spin 1.2s linear infinite;
+        }
+        .ai-loader svg {
+            width: 100%;
+            height: 100%;
+        }
+        body.dark .ai-loader circle,
+        body.dark .ai-loader path {
+            stroke: #60a5fa;
+            fill: #60a5fa;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
-<body>
-    <!-- Loading Screen -->
+<body class="antialiased">
+
+    <!-- Loading -->
     <div id="loading">
-        <div class="ai-spinner"></div>
+        <div class="ai-loader">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="28" stroke="#3b82f6" stroke-width="2.5" opacity="0.25"/>
+                <circle cx="32" cy="14" r="4" fill="#3b82f6"/>
+                <circle cx="14" cy="32" r="4" fill="#3b82f6"/>
+                <circle cx="50" cy="32" r="4" fill="#3b82f6"/>
+                <circle cx="22" cy="48" r="4" fill="#3b82f6"/>
+                <circle cx="42" cy="48" r="4" fill="#3b82f6"/>
+                <circle cx="32" cy="32" r="5" fill="#3b82f6"/>
+                <path d="M32 18 L32 27" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+                <path d="M18 32 L27 32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+                <path d="M37 32 L46 32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+                <path d="M25 45 L30 37" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+                <path d="M39 45 L34 37" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </div>
     </div>
 
-    <!-- Particle Background -->
-    <canvas id="particles"></canvas>
-
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-10">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="index.html">
-                <img src="https://img.icons8.com/ios-filled/50/ffffff/artificial-intelligence.png" alt="AI Logo" class="h-10">
-            </a>
-            <ul class="flex space-x-6">
-                <li><a href="index.html" class="hover:text-blue-400 transition-colors">About</a></li>
-                <li><a href="experience.html" class="hover:text-blue-400 transition-colors">Experience</a></li>
-                <li><a href="publications.html" class="hover:text-blue-400 transition-colors">Publications</a></li>
-                <li><a href="education.html" class="hover:text-blue-400 transition-colors">Education</a></li>
-            </ul>
+    <nav class="border-b border-gray-100 nav-border">
+        <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+            <a href="index.html" class="hologram-text">Khoi Tran</a>
+
+            <div class="flex items-center gap-8">
+                <ul class="hidden md:flex items-center space-x-8">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="experience.html" class="nav-link">Experience</a></li>
+                    <li><a href="publications.html" class="nav-link">Publications</a></li>
+                </ul>
+
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 transition">
+                    <svg id="sun-icon" class="w-6 h-6 hidden text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
+                    </svg>
+                    <svg id="moon-icon" class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+                    </svg>
+                </button>
+            </div>
         </div>
     </nav>
 
     <!-- Experience Section -->
-    <section id="experience" class="min-h-screen py-16">
-        <div class="container mx-auto px-4">
-            <h2 class="text-5xl font-bold gradient-text text-center mb-12" data-aos="zoom-in">Experience</h2>
-            <div class="space-y-8 max-w-4xl mx-auto">
-                <!-- Experience 1 -->
-                <div class="flex flex-col md:flex-row bg-gray-800 bg-opacity-50 p-6 rounded-lg hover-glow" data-aos="zoom-in-up">
-                    <div class="md:w-1/3">
-                        <img src="asset/tdtu.png" alt="NLP Lab" class="rounded-lg w-full">
-                    </div>
-                    <div class="md:w-2/3 md:pl-6 mt-4 md:mt-0">
-                        <h3 class="text-2xl font-semibold text-blue-300"><span class="highlight-text">Natural Language Processing and Knowledge Discovery Research Group Lab</span></h3>
-                        <p class="text-gray-400">Sep, 2024 - Present</p>
-                        <p>I’m working on Natural Language Processing tasks with <span class="gradient-text font-bold">Dr. Phuoc Tran</span>.</p>
-                    </div>
+    <main class="max-w-6xl mx-auto px-6 py-12 md:py-16">
+        <h1 class="text-3xl md:text-4xl font-bold text-main mb-10">
+            Experience
+        </h1>
+
+        <div class="space-y-8">
+
+            <!-- CIR Lab -->
+            <div class="card flex flex-col md:flex-row gap-6 p-6 rounded-xl border border-gray-100">
+                <div class="flex-shrink-0">
+                    <img src="asset/ntnu.png" alt="CIR Lab" class="w-40 h-40 object-contain rounded-lg bg-gray-50">
                 </div>
-                <!-- Experience 2 -->
-                <div class="flex flex-col md:flex-row bg-gray-800 bg-opacity-50 p-6 rounded-lg hover-glow" data-aos="zoom-in-up">
-                    <div class="md:w-1/3">
-                        <img src="asset/sbir.jpg" alt="SBIR Lab" class="rounded-lg w-full">
-                    </div>
-                    <div class="md:w-2/3 md:pl-6 mt-4 md:mt-0">
-                        <h3 class="text-2xl font-semibold text-blue-300"><span class="highlight-text">SBIR Lab - Ho Chi Minh City of Education</span></h3>
-                        <p class="text-gray-400">Jul, 2023 - Aug, 2024</p>
-                        <p>I researched multimodal retrieval task under the guidance of <span class="gradient-text font-bold">Dr. The Thanh Van</span>.</p>
-                    </div>
+                <div class="flex-1">
+                    <h2 class="text-xl font-semibold text-main mb-1">
+                        Computational Intelligence and Robotics Lab
+                    </h2>
+                    <p class="text-blue-600 font-medium mb-1">National Taiwan Normal University</p>
+                    <p class="text-muted text-sm mb-3">Jun 2026 – Dec 2026</p>
+                    <p class="text-secondary text-[16px] leading-relaxed">
+                        Working on <span class="font-medium text-main">Anomaly Detection System for Intelligent Surveillance</span>.<br>
+                        Advisor: 
+                        <a href="https://sites.google.com/view/cirlab1/prof-chen-chien-hsu/personal-profile?authuser=0" target="_blank" class="text-blue-600 hover:underline font-medium">
+                            Dist. Prof. Chen-Chien James Hsu
+                        </a>
+                    </p>
                 </div>
             </div>
+
+            <!-- NLP Lab -->
+            <div class="card flex flex-col md:flex-row gap-6 p-6 rounded-xl border border-gray-100">
+                <div class="flex-shrink-0">
+                    <img src="asset/tdtu.png" alt="NLP Lab" class="w-40 h-40 object-contain rounded-lg">
+                </div>
+                <div class="flex-1">
+                    <h2 class="text-xl font-semibold text-main mb-1">
+                        Natural Language Processing and Knowledge Discovery Research Lab
+                    </h2>
+                    <p class="text-blue-600 font-medium mb-1">Ton Duc Thang University</p>
+                    <p class="text-muted text-sm mb-3">Sep 2024 – Present</p>
+                    <p class="text-secondary text-[16px] leading-relaxed">
+                        Working on <span class="font-medium text-main">Aspect-based Sentiment Analysis</span>.<br>
+                        Advisor: 
+                        <a href="https://sites.google.com/view/phuoc-tran?pli=1" target="_blank" class="text-blue-600 hover:underline font-medium">
+                            Dr. Phuoc Tran
+                        </a>
+                    </p>
+                </div>
+            </div>
+
         </div>
-    </section>
+    </main>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize AOS
-        AOS.init({ duration: 1000 });
-
-        // Hide loading screen after 2 seconds
+        // Loading
         window.addEventListener('load', () => {
             setTimeout(() => {
-                document.getElementById('loading').style.display = 'none';
-            }, 2000);
+                document.getElementById('loading').classList.add('hide');
+            }, 700);
         });
 
-        // Particle effect
-        const canvas = document.getElementById('particles');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        // Theme
+        const toggleBtn = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
 
-        const particles = [];
-        const particleCount = 150;
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2 + 1;
-                this.speedX = Math.random() * 0.5 - 0.25;
-                this.speedY = Math.random() * 0.5 - 0.25;
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.size > 0.2) this.size -= 0.01;
-                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-            }
-            draw() {
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark');
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
         }
 
-        function initParticles() {
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
+        toggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            
+            if (document.body.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            } else {
+                localStorage.setItem('theme', 'light');
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
             }
-        }
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach((particle, index) => {
-                particle.update();
-                particle.draw();
-                if (particle.size <= 0.2) {
-                    particles.splice(index, 1);
-                    particles.push(new Particle());
-                }
-            });
-            requestAnimationFrame(animateParticles);
-        }
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-
-        initParticles();
-        animateParticles();
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
         });
     </script>
 </body>

@@ -4,111 +4,229 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Khoi Tran - AI Portfolio</title>
-    <link rel="icon" type="image/png" href="https://img.icons8.com/ultraviolet/40/physics.png">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background: #0f0f0f;
-            color: #e5e5e5;
             font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        body { background-color: #ffffff; color: #1f2937; }
+        body.dark { background-color: #0f0f0f; color: #e5e5e5; }
+        body.dark .nav-border { border-color: #262626; }
+        body.dark .nav-link { color: #a3a3a3; }
+        body.dark .nav-link:hover { color: #60a5fa; }
+        body.dark .text-main { color: #f5f5f5; }
+        body.dark .text-secondary { color: #d4d4d4; }
+        body.dark .border-custom { border-color: #262626; }
+        body.dark .section-title { color: #60a5fa; }
+
+        .hologram-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #22d3ee, #3b82f6, #818cf8, #22d3ee);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: hologram 4s linear infinite;
+        }
+        @keyframes hologram {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
         }
         .nav-link {
-            color: #a3a3a3;
-            transition: color 0.2s ease;
+            color: #4b5563;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.2s;
         }
-        .nav-link:hover {
-            color: #ffffff;
+        .nav-link:hover { color: #2563eb; }
+        .section-title {
+            color: #2563eb;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.025em;
         }
-        .social-icon {
-            opacity: 0.7;
-            transition: opacity 0.2s ease;
+
+        /* Loading */
+        #loading {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
         }
-        .social-icon:hover {
-            opacity: 1;
+        body.dark #loading {
+            background-color: #0f0f0f;
+        }
+        #loading.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* AI Research Spinner */
+        .ai-loader {
+            width: 56px;
+            height: 56px;
+            animation: spin 1.2s linear infinite;
+        }
+        .ai-loader svg {
+            width: 100%;
+            height: 100%;
+        }
+        body.dark .ai-loader circle,
+        body.dark .ai-loader path {
+            stroke: #60a5fa;
+            fill: #60a5fa;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body class="antialiased">
 
+    <!-- Loading -->
+    <div id="loading">
+        <div class="ai-loader">
+            <!-- Neural Network Icon -->
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="28" stroke="#3b82f6" stroke-width="2.5" opacity="0.25"/>
+                
+                <circle cx="32" cy="14" r="4" fill="#3b82f6"/>
+                <circle cx="14" cy="32" r="4" fill="#3b82f6"/>
+                <circle cx="50" cy="32" r="4" fill="#3b82f6"/>
+                <circle cx="22" cy="48" r="4" fill="#3b82f6"/>
+                <circle cx="42" cy="48" r="4" fill="#3b82f6"/>
+                <circle cx="32" cy="32" r="5" fill="#3b82f6"/>
+                
+                <path d="M32 18 L32 27" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+                <path d="M18 32 L27 32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+                <path d="M37 32 L46 32" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+                <path d="M25 45 L30 37" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+                <path d="M39 45 L34 37" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </div>
+    </div>
+
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-10 bg-[#0f0f0f]/80 backdrop-blur-sm border-b border-white/5">
-        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-white font-medium tracking-wide">
-                Khoi Tran
-            </a>
-            <ul class="flex space-x-8 text-sm">
-                <li><a href="index.html" class="nav-link">About</a></li>
-                <li><a href="experience.html" class="nav-link">Experience</a></li>
-                <li><a href="publications.html" class="nav-link">Publications</a></li>
-                <li><a href="education.html" class="nav-link">Education</a></li>
-            </ul>
+    <nav class="border-b border-gray-100 nav-border">
+        <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+            <a href="index.html" class="hologram-text">Khoi Tran</a>
+            <div class="flex items-center gap-8">
+                <ul class="hidden md:flex items-center space-x-8">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="experience.html" class="nav-link">Experience</a></li>
+                    <li><a href="publications.html" class="nav-link">Publications</a></li>
+                </ul>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-neutral-800 transition">
+                    <svg id="sun-icon" class="w-6 h-6 hidden text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
+                    </svg>
+                    <svg id="moon-icon" class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+                    </svg>
+                </button>
+            </div>
         </div>
     </nav>
 
-    <!-- About Section -->
-    <section class="min-h-screen flex items-center pt-20 pb-16">
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
-                
-                <!-- Avatar -->
-                <div class="flex-shrink-0">
-                    <img 
-                        src="asset/avatar_2025.jpg" 
-                        alt="Khoi Tran" 
-                        class="w-64 h-64 md:w-72 md:h-72 rounded-full object-cover border border-white/10"
-                    >
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-6 py-12 md:py-16">
+        <div class="flex flex-col md:flex-row gap-10 md:gap-14">
+            <div class="flex-shrink-0">
+                <img src="asset/avatar_2025.jpg" alt="Khoi Tran" class="w-64 h-64 md:w-72 md:h-72 object-cover rounded-lg shadow-sm">
+            </div>
+            <div class="flex-1">
+                <h1 class="text-3xl md:text-4xl font-bold text-main mb-2">Khoi Tran</h1>
+                <p class="text-lg text-blue-600 font-medium mb-8">AI/ML Researcher · Master’s Student</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 border-t border-b border-custom py-6">
+                    <div>
+                        <p class="section-title mb-2">MASTER’S STUDENT · TDTU</p>
+                        <p class="text-secondary text-[16px] leading-relaxed">
+                            I am a Master’s student at <span class="text-main font-medium">Ton Duc Thang University</span>, 
+                            currently working as an AI/ML Researcher at the 
+                            <span class="text-main font-medium">Natural Language Processing and Knowledge Discovery Research Lab</span>.
+                        </p>
+                    </div>
+                    <div>
+                        <p class="section-title mb-2">RESEARCH · NLP LAB</p>
+                        <p class="text-secondary text-[16px] leading-relaxed">
+                            My research focuses on Natural Language Processing under the supervision of 
+                            <a href="https://sites.google.com/view/phuoc-tran?pli=1" target="_blank" class="text-blue-600 hover:underline font-medium">Dr. Phuoc Tran</a>.
+                        </p>
+                    </div>
                 </div>
 
-                <!-- Content -->
-                <div class="flex-1 space-y-5">
-                    <div>
-                        <h1 class="text-3xl md:text-4xl font-semibold text-white mb-2">
-                            Khoi Tran
-                        </h1>
-                        <p class="text-neutral-400 text-lg">
-                            AI/ML Researcher
-                        </p>
-                    </div>
+                <div class="mb-6">
+                    <p class="text-secondary text-[16px] leading-relaxed">
+                        <span class="font-semibold text-main">Background.</span> 
+                        I previously obtained my Bachelor’s degree in Software Engineering at 
+                        <span class="text-main font-medium">Ton Duc Thang University</span>.
+                    </p>
+                </div>
 
-                    <div class="space-y-4 text-[15px] leading-relaxed text-neutral-300">
-                        <p>
-                            I’m a Master’s student at <span class="text-white">Ton Duc Thang University</span>.
-                        </p>
-                        <p>
-                            Currently working as an AI/ML Researcher at the 
-                            <span class="text-white">Natural Language Processing and Knowledge Discovery Research Lab</span>, 
-                            focusing on Natural Language Processing under the supervision of 
-                            <span class="text-white">Dr. Phuoc Tran</span>.
-                        </p>
-                        <p>
-                            Previously, I obtained my Bachelor’s degree in Software Engineering at 
-                            <span class="text-white">Ton Duc Thang University</span>.
-                        </p>
-                    </div>
+                <div class="mb-8">
+                    <p class="text-secondary text-[16px] leading-relaxed">
+                        <span class="font-semibold text-main">Research interests.</span> 
+                        Safety and Alignment in LLMs, Sentiment, Emotion, and Stylistic Analysis.
+                    </p>
+                </div>
 
-                    <!-- Social Links -->
-                    <div class="flex items-center gap-5 pt-2">
-                        <a href="mailto:tamkhoitran2002@gmail.com" class="social-icon" title="Email">
-                            <img src="asset/gmail.png" alt="Email" class="w-6 h-6">
-                        </a>
-                        <a href="#" class="social-icon" title="CV">
-                            <img src="https://img.icons8.com/ios-filled/50/a3a3a3/document.png" alt="CV" class="w-6 h-6">
-                        </a>
-                        <a href="https://scholar.google.com/citations?user=IGODsHAAAAAJ&hl=vi" class="social-icon" title="Google Scholar">
-                            <img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" class="w-6 h-6">
-                        </a>
-                        <a href="https://orcid.org/0009-0009-3940-2369" class="social-icon" title="ORCID">
-                            <img src="https://orcid.org/assets/vectors/orcid.logo.icon.svg" alt="ORCID" class="w-6 h-6">
-                        </a>
-                        <a href="https://www.linkedin.com/in/tamkhoitran/" class="social-icon" title="LinkedIn">
-                            <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" alt="LinkedIn" class="w-6 h-6">
-                        </a>
-                    </div>
+                <div class="flex items-center gap-6 pt-2">
+                    <a href="mailto:tamkhoitran2002@gmail.com" class="opacity-70 hover:opacity-100 transition" title="Email">
+                        <img src="asset/gmail.png" alt="Email" class="w-7 h-7">
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=IGODsHAAAAAJ&hl=vi" class="opacity-70 hover:opacity-100 transition" title="Google Scholar">
+                        <img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" class="w-7 h-7">
+                    </a>
+                    <a href="https://orcid.org/0009-0009-3940-2369" class="opacity-70 hover:opacity-100 transition" title="ORCID">
+                        <img src="https://orcid.org/assets/vectors/orcid.logo.icon.svg" alt="ORCID" class="w-7 h-7">
+                    </a>
+                    <a href="https://www.linkedin.com/in/tamkhoitran/" class="opacity-70 hover:opacity-100 transition" title="LinkedIn">
+                        <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" alt="LinkedIn" class="w-7 h-7">
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
+    </main>
 
+    <script>
+        // Loading
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hide');
+            }, 700);
+        });
+
+        // Theme
+        const toggleBtn = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark');
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            if (document.body.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            } else {
+                localStorage.setItem('theme', 'light');
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            }
+        });
+    </script>
 </body>
 </html>
